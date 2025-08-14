@@ -1,7 +1,11 @@
 from fastapi import FastAPI
 from app.api.v1 import routes, health
 from app.core.config import settings
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
+api_key = os.getenv("FOURSQUARE_API_KEY")
 app = FastAPI(title="SmartExplore AI - Backend")
 
 app.include_router(health.router, prefix="/health")
